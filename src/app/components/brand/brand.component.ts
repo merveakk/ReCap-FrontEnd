@@ -10,7 +10,7 @@ import { BrandResponseModel } from 'src/app/models/brandResponseModel';
 })
 export class BrandComponent implements OnInit {
   brands:Brand[]=[];
-  apiUrl="https://localhost:44351/api/brands/getall";
+  apiUrl="https://localhost:44351/api/brands/getall"; 
   
 
   constructor(private httpClient:HttpClient) { }
@@ -24,5 +24,4 @@ export class BrandComponent implements OnInit {
       this.brands=response.data
     });
   }
-
 }
