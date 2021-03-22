@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient} from '@angular/common/http'
+import { Rental } from 'src/app/models/rental';
+import { RentalService } from 'src/app/services/rental.service';
 
 @Component({
   selector: 'app-rental',
@@ -7,10 +8,18 @@ import { HttpClient} from '@angular/common/http'
   styleUrls: ['./rental.component.css']
 })
 export class RentalComponent implements OnInit {
+  rentals:Rental[]=[];
+  dataLoaded=false;
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private rentalService:RentalService) { }
 
   ngOnInit(): void {
+    this.getRentals();
   }
-
+  getRentals(){
+    this.rentalService.getRentals().subscribe(response=>{
+      this.rentals=response.data;
+      this.dataLoaded=true;
+    })
+  }
 }
