@@ -5,7 +5,8 @@
       <th>Color Name</th>
     </tr>
   </thead>
-  <tr *ngFor="let color of colors">
+  <tr (click)="setCurrentColor(color)" routerLink="/cars/color/{{color.colorId}}"
+   *ngFor="let color of colors" [class]="getCurrentColorClass(color)">
     <td>{{color.colorId}}</td>
     <td>{{color.colorName}}</td>
   </tr>
